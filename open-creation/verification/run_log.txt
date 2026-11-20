@@ -1,6 +1,6 @@
 ScopeGuard Audit Studio — Deterministic Verification Run
 Engine: verify_engine.py v1.0.0 (pure Python stdlib mirror of the index.html engine)
-Run at: 2026-11-20T14:45:53Z
+Run at: 2026-11-20T14:47:20Z
 ==============================================================================
 CHK-01  [PASS]
   claim : Preset 1 Authorized Baseline: exact verdict, score and finding mix
@@ -28,9 +28,9 @@ CHK-08  [PASS]
   result: bundle schema/keys complete; 5 actions, 5 findings x 8 citations, metrics consistent (score 20, verdict REJECTED), 11 remediation steps
 CHK-09  [FAIL]
   claim : index.html self-containment audit (zero external dependencies)
-  result: violations: ; doctype=True title=False
+  result: violations: ; doctype=False title=False
 CHK-10  [PASS]
   claim : Redaction audit across all project files
-  result: scanned 6 files: 0 email tokens, 0 non-allowlisted IPv4 literals (RFC 5737 + loopback/private/link-local + 3 CHK-04 boundary probes), 0 bare registrable domains, 0 raw currency amounts; placeholders present ([REDACTED_ENTITY] x52, [REDACTED_AMOUNT] x12)
+  result: scanned 7 files: 0 email tokens, 0 non-allowlisted IPv4 literals (RFC 5737 + loopback/private/link-local + 3 CHK-04 boundary probes), 0 bare registrable domains, 0 raw currency amounts; placeholders present ([REDACTED_ENTITY] x53, [REDACTED_AMOUNT] x13)
 ==============================================================================
 SUMMARY: 9/10 checks passed — NOT CERTIFIED
