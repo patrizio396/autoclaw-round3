@@ -1,6 +1,6 @@
 ScopeGuard Audit Studio — Deterministic Verification Run
 Engine: verify_engine.py v1.0.0 (pure Python stdlib mirror of the index.html engine)
-Run at: 2026-11-20T14:48:32Z
+Run at: 2026-11-20T15:00:14Z
 ==============================================================================
 CHK-01  [PASS]
   claim : Preset 1 Authorized Baseline: exact verdict, score and finding mix
