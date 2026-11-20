@@ -1,0 +1,34 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Verification Checks - Section 5.2</title><style>
+body{margin:0;background:#ffffff;font-family:'Segoe UI',Arial,sans-serif;color:#0f172a;padding:12px 14px}
+h1{font-size:14px;margin:0 0 3px;line-height:1.2}
+.sub{font-size:9.5px;color:#475569;margin:0 0 7px}
+.r{border-bottom:1px solid #cbd5e1;padding:3px 0;display:flex;align-items:flex-start}
+.r:nth-child(even){background:#f8fafc}
+.id{font-weight:700;font-size:10px;width:52px;flex-shrink:0;padding-top:1px}
+.desc{font-size:9.5px;line-height:1.3;flex:1;color:#0f172a}
+.det{font-size:8.5px;color:#64748b;line-height:1.25;margin-top:1px}
+.res{font-size:8.5px;font-weight:700;color:#ffffff;background:#047857;border-radius:7px;padding:1px 6px;margin-left:5px;flex-shrink:0}
+.banner{background:#1e293b;color:#fff;font-size:10.5px;padding:5px 9px;border-radius:4px;margin-top:7px}
+.banner b{color:#fbbf24}
+.foot{margin-top:6px;font-size:9px;color:#64748b}
+</style></head><body>
+<h1>Script Verification Checks (CHK-01..CHK-15)</h1>
+<p class="sub">[REDACTED_ENTITY] - 90-day operations audit - deterministic verification run, 2026-11-19</p>
+<div class="r"><div class="id">CHK-01</div><div class="desc">Referential integrity: 12 SKUs, identical key set across all three CSVs<div class="det">sales=12 po=12 stock=12</div></div><span class="res">PASS</span></div>
+<div class="r"><div class="id">CHK-02</div><div class="desc">Domain checks: returns/shrinkage within sold, retail &gt; current cost &gt; 0, positive lead/MOQ/holding<div class="det">12/12 clean</div></div><span class="res">PASS</span></div>
+<div class="r"><div class="id">CHK-03</div><div class="desc">Blended net margin reproduced by independent single-pass recomputation<div class="det">rev=156,716.70 profit=76,595.50 blended=48.8751%</div></div><span class="res">PASS</span></div>
+<div class="r"><div class="id">CHK-04</div><div class="desc">Cost-creep SKU set == {SKU-002, SKU-004, SKU-009}<div class="det">found=SKU-002,SKU-004,SKU-009</div></div><span class="res">PASS</span></div>
+<div class="r"><div class="id">CHK-05</div><div class="desc">Below-ROP SKU set == {SKU-002, SKU-004, SKU-007, SKU-008}<div class="det">found=SKU-002,SKU-004,SKU-007,SKU-008</div></div><span class="res">PASS</span></div>
+<div class="r"><div class="id">CHK-06</div><div class="desc">Dead/slow-stock SKU set == {SKU-010, SKU-011}<div class="det">found=SKU-010,SKU-011</div></div><span class="res">PASS</span></div>
+<div class="r"><div class="id">CHK-07</div><div class="desc">Proposed PO quantities are MOQ multiples and close the order-up-to gap</div><span class="res">PASS</span></div>
+<div class="r"><div class="id">CHK-08</div><div class="desc">Trapped working capital reconciles to independent recomputation<div class="det">capital=8,015.00</div></div><span class="res">PASS</span></div>
+<div class="r"><div class="id">CHK-09</div><div class="desc">Coverage sanity: no SKU above 200 days of supply unless dead-stock flagged</div><span class="res">PASS</span></div>
+<div class="r"><div class="id">CHK-10</div><div class="desc">Redaction compliance: supplier ids within [REDACTED_ENTITY]_A..D; PO ids unique<div class="det">suppliers=A, B, C, D</div></div><span class="res">PASS</span></div>
+<div class="r"><div class="id">CHK-11</div><div class="desc">GMROI reconciles across all 12 SKUs; ranking and portfolio ratio internally consistent<div class="det">portfolio=14.99 | inventory_at_cost=20,722.75 | annualized_profit=310,637.31</div></div><span class="res">PASS</span></div>
+<div class="r"><div class="id">CHK-12</div><div class="desc">Elasticity break-even thresholds verified for SKU-004 and SKU-009<div class="det">SKU-004 breakeven_drop=-28.67%; SKU-009 breakeven_drop=-24.56%</div></div><span class="res">PASS</span></div>
+<div class="r"><div class="id">CHK-13</div><div class="desc">Weekly cash waterfall reconciles: total inflows == $11,817.05, total PO commitments == $12,058.80, cumulative cash never negative<div class="det">inflows=11,817.05 commitments=12,058.80 min_cum=3,980.48 due_within_30d=0.00</div></div><span class="res">PASS</span></div>
+<div class="r"><div class="id">CHK-14</div><div class="desc">ERP/POS batch CSV row-count and dollar-sum reconciliation against report tables<div class="det">erp_rows=4 erp_sum=12,058.80 pos_rows=4</div></div><span class="res">PASS</span></div>
+<div class="r"><div class="id">CHK-15</div><div class="desc">Redaction regex scan across all package .md/.csv/.py/.json files: zero unredacted emails, phone numbers, or forbidden placeholders<div class="det">scanned=9 files, hits=0</div></div><span class="res">PASS</span></div>
+<div class="banner">RESULT: <b>ALL 15 CHECKS PASSED</b> - blended margin 48.88% | creep -$2,339.75/90d | GMROI 14.99 | waterfall min cumulative +$3,980.48</div>
+<p class="foot">Source: smb_operations_audit.md §5.2 | Log: verification/run_log.txt | Metrics: verification/computed_metrics.json | Script: compute_metrics.py</p>
+</body></html>

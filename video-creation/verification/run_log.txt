@@ -1,0 +1,40 @@
+==========================================================================
+ [REDACTED_ENTITY] MULTI-AGENT DATA PIPELINE - BUILD AND VERIFY
+ Master: 45.000 s at 60 fps = 2700 frames - 1080p - PCM 44100 Hz stereo
+==========================================================================
+
+[build] synthesizing pipeline/ambient_cues.wav (deterministic)...
+[build] ambient_cues.wav written (7938044 bytes)
+[build] ffmpeg command written to pipeline/ffmpeg_command.txt
+
+--------------------------------------------------------------------------
+ VERIFICATION - 10 DETERMINISTIC CHECKS
+--------------------------------------------------------------------------
+CHK-01  Storyboard scene timing integrity ........ PASS
+        4 scenes | frames 0-2700 contiguous | durations sum to exact 45.000 s at 60 fps
+CHK-02  SRT timestamp monotonicity and boundaries  PASS
+        16 cues | monotonic, zero overlaps | span 00:00:00,500 -> 00:00:44,800 (end <= 00:00:45,000)
+CHK-03  SRT line length and reading speed ........ PASS
+        max line 40/42 chars | max reading speed 19.57/20.00 cps (cue 13) | all cues >= 1.0 s
+CHK-04  WAV binary header and duration ........... PASS
+        44100 Hz | stereo | 16-bit PCM | 1,984,500 frames = exact 45.000 s | 7938044 bytes
+CHK-05  Renderer engine markers .................. PASS
+        1920x1080 canvas buffer | renderAtFrame(frameIndex) deterministic hook | MediaRecorder + captureStream(60) export | rAF playback
+CHK-06  Renderer self-containment ................ PASS
+        0 external http(s) script/stylesheet/font references - fully self-contained and offline-capable
+CHK-07  Scene boundary alignment across artifacts  PASS
+        0/10/24/36/45 s aligned across storyboard + renderer + SRT | 5 chime markers detected in WAV (worst energy ratio 2.73)
+CHK-08  Voiceover word-count pacing .............. PASS
+        107 voiceover words in [105, 135] broadcast window (2.4 words/s over 45 s)
+CHK-09  FFmpeg command syntax and paths .......... PASS
+        H.264 1080p60 master | 3 inputs verified (webm captured + wav + srt) | command written to pipeline/ffmpeg_command.txt
+CHK-10  Redaction compliance scan ................ PASS
+        scanned every text deliverable | 0 emails, 0 currency figures, 0 org-name patterns | canonical redaction tokens verified
+
+--------------------------------------------------------------------------
+FFMPEG COMMAND (written to pipeline/ffmpeg_command.txt):
+ffmpeg -y -i pipeline/recorded_video.webm -i pipeline/ambient_cues.wav -i pipeline/subtitles.srt -map 0:v:0 -map 1:a:0 -map 2:s:0 -c:v libx264 -preset medium -crf 18 -r 60 -pix_fmt yuv420p -c:a aac -b:a 192k -c:s mov_text -metadata:s:s:0 language=eng -shortest master_1080p60.mp4
+--------------------------------------------------------------------------
+
+SUMMARY: 10/10 CHECKS PASSED - MASTER PIPELINE VERIFIED
+==========================================================================

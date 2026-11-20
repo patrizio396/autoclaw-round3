@@ -1,0 +1,76 @@
+{
+  "pipeline": "[REDACTED_ENTITY] multi-agent data ingestion explainer",
+  "fps": 60,
+  "frames": 2700,
+  "duration_s": 45.0,
+  "audio": {
+    "rate_hz": 44100,
+    "channels": 2,
+    "bits": 16,
+    "frames": 1984500
+  },
+  "checks": [
+    {
+      "id": "CHK-01",
+      "description": "Storyboard scene timing integrity",
+      "result": "PASS",
+      "detail": "4 scenes | frames 0-2700 contiguous | durations sum to exact 45.000 s at 60 fps"
+    },
+    {
+      "id": "CHK-02",
+      "description": "SRT timestamp monotonicity and boundaries",
+      "result": "PASS",
+      "detail": "16 cues | monotonic, zero overlaps | span 00:00:00,500 -> 00:00:44,800 (end <= 00:00:45,000)"
+    },
+    {
+      "id": "CHK-03",
+      "description": "SRT line length and reading speed",
+      "result": "PASS",
+      "detail": "max line 40/42 chars | max reading speed 19.57/20.00 cps (cue 13) | all cues >= 1.0 s"
+    },
+    {
+      "id": "CHK-04",
+      "description": "WAV binary header and duration",
+      "result": "PASS",
+      "detail": "44100 Hz | stereo | 16-bit PCM | 1,984,500 frames = exact 45.000 s | 7938044 bytes"
+    },
+    {
+      "id": "CHK-05",
+      "description": "Renderer engine markers",
+      "result": "PASS",
+      "detail": "1920x1080 canvas buffer | renderAtFrame(frameIndex) deterministic hook | MediaRecorder + captureStream(60) export | rAF playback"
+    },
+    {
+      "id": "CHK-06",
+      "description": "Renderer self-containment",
+      "result": "PASS",
+      "detail": "0 external http(s) script/stylesheet/font references - fully self-contained and offline-capable"
+    },
+    {
+      "id": "CHK-07",
+      "description": "Scene boundary alignment across artifacts",
+      "result": "PASS",
+      "detail": "0/10/24/36/45 s aligned across storyboard + renderer + SRT | 5 chime markers detected in WAV (worst energy ratio 2.73)"
+    },
+    {
+      "id": "CHK-08",
+      "description": "Voiceover word-count pacing",
+      "result": "PASS",
+      "detail": "107 voiceover words in [105, 135] broadcast window (2.4 words/s over 45 s)"
+    },
+    {
+      "id": "CHK-09",
+      "description": "FFmpeg command syntax and paths",
+      "result": "PASS",
+      "detail": "H.264 1080p60 master | 3 inputs verified (webm captured + wav + srt) | command written to pipeline/ffmpeg_command.txt"
+    },
+    {
+      "id": "CHK-10",
+      "description": "Redaction compliance scan",
+      "result": "PASS",
+      "detail": "scanned every text deliverable | 0 emails, 0 currency figures, 0 org-name patterns | canonical redaction tokens verified"
+    }
+  ],
+  "passed": 10,
+  "total": 10
+}

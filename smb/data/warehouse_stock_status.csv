@@ -1,0 +1,13 @@
+sku_id,on_hand_units,on_order_units,days_since_last_sale,safety_stock_units
+SKU-001,180,120,1,100
+SKU-002,95,0,2,90
+SKU-003,150,0,3,40
+SKU-004,130,0,4,35
+SKU-005,60,40,1,30
+SKU-006,85,0,1,35
+SKU-007,88,24,5,20
+SKU-008,70,0,2,45
+SKU-009,190,0,3,40
+SKU-010,140,0,75,25
+SKU-011,150,0,63,15
+SKU-012,120,0,2,30

@@ -1,0 +1,13 @@
+sku_id,category,retail_price,units_sold_90d,units_returned,shrinkage_units,holding_cost_pct
+SKU-001,Gourmet Coffee Whole Bean,18.50,1240,22,18,22
+SKU-002,Single-Origin Craft Chocolate,12.00,1580,30,26,20
+SKU-003,Specialty Loose-Leaf Tea,24.00,520,12,8,22
+SKU-004,Premium Extra-Virgin Olive Oil,29.90,460,9,6,24
+SKU-005,Artisan Cheese Short Shelf-Life,17.90,830,41,74,30
+SKU-006,Fresh Pasta Short Shelf-Life,9.80,960,52,61,30
+SKU-007,Hand-Blown Glassware Fragile,42.00,310,14,21,25
+SKU-008,Single-Origin Wildflower Honey,21.50,640,15,9,22
+SKU-009,Small-Batch Hot Sauce,13.90,720,18,11,22
+SKU-010,Seasonal Gift Basket,68.00,210,6,3,35
+SKU-011,Designer Ceramic Vase,55.00,95,7,4,28
+SKU-012,Organic Pantry Staples Bundle,34.00,380,11,7,22

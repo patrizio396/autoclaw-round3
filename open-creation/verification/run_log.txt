@@ -1,0 +1,36 @@
+ScopeGuard Audit Studio — Deterministic Verification Run
+Engine: verify_engine.py v1.0.0 (pure Python stdlib mirror of the index.html engine)
+Run at: 2026-11-20T14:45:53Z
+==============================================================================
+CHK-01  [PASS]
+  claim : Preset 1 Authorized Baseline: exact verdict, score and finding mix
+  result: verdict=APPROVED score=100/100 REI=0/100 findings: 4 PASS / 0 WARN / 0 BLOCK (expected APPROVED / 100 / 4 PASS / 0 WARN / 0 BLOCK)
+CHK-02  [PASS]
+  claim : Preset 2 Out-of-Scope and Destructive Trap: exact verdict, score, citations
+  result: verdict=REJECTED score=20/100 REI=100/100 findings: 1 PASS / 0 WARN / 4 BLOCK; citations exact-match: True
+CHK-03  [PASS]
+  claim : Preset 3 Wildcard vs Exclusion Conflict: exact verdict, score, precedence proof
+  result: verdict=ESCALATE_TO_HUMAN score=88/100 REI=12/100 findings: 3 PASS / 1 WARN / 0 BLOCK; A2=WARN_HUMAN_REVIEW with POL-01 ok (wildcard matched) but POL-02 warn + POL-06 warn (exclusion-overrides-inclusion precedence proven)
+CHK-04  [PASS]
+  claim : CIDR boundary precision vs ipaddress reference
+  result: 9/9 boundary assertions hold and match the ipaddress-module reference (192.0.2.10 inside 192.0.2.0/24 vs 192.0.3.10 outside; network/broadcast edges; /32 exactness; /0 supernet)
+CHK-05  [PASS]
+  claim : Exclusion-overrides-wildcard precedence
+  result: wildcard would match legacy host: True; B1=WARN_HUMAN_REVIEW (POL-01 ok yet POL-02 warn — exclusion overrides inclusion); B2=PASS (no exclusion hit)
+CHK-06  [PASS]
+  claim : Destructive method and rate-limit breach detection
+  result: C1 DELETE in-scope: BLOCK_VIOLATION (POL-04 violated); C2 GET at 500 rpm vs cap 60: WARN_HUMAN_REVIEW (POL-05 warn, POL-04 ok); C3 stress-load tool run: BLOCK_VIOLATION (POL-04 violated)
+CHK-07  [PASS]
+  claim : Markdown export schema and completeness
+  result: all 16 required sections/tokens present and 5 finding rows found
+CHK-08  [PASS]
+  claim : JSON export schema, keys and metric consistency
+  result: bundle schema/keys complete; 5 actions, 5 findings x 8 citations, metrics consistent (score 20, verdict REJECTED), 11 remediation steps
+CHK-09  [FAIL]
+  claim : index.html self-containment audit (zero external dependencies)
+  result: violations: ; doctype=True title=False
+CHK-10  [PASS]
+  claim : Redaction audit across all project files
+  result: scanned 6 files: 0 email tokens, 0 non-allowlisted IPv4 literals (RFC 5737 + loopback/private/link-local + 3 CHK-04 boundary probes), 0 bare registrable domains, 0 raw currency amounts; placeholders present ([REDACTED_ENTITY] x52, [REDACTED_AMOUNT] x12)
+==============================================================================
+SUMMARY: 9/10 checks passed — NOT CERTIFIED

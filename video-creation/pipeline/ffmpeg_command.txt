@@ -1,0 +1,1 @@
+ffmpeg -y -i pipeline/recorded_video.webm -i pipeline/ambient_cues.wav -i pipeline/subtitles.srt -map 0:v:0 -map 1:a:0 -map 2:s:0 -c:v libx264 -preset medium -crf 18 -r 60 -pix_fmt yuv420p -c:a aac -b:a 192k -c:s mov_text -metadata:s:s:0 language=eng -shortest master_1080p60.mp4
