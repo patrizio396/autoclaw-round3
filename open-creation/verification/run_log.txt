@@ -1,6 +1,6 @@
 ScopeGuard Audit Studio — Deterministic Verification Run
 Engine: verify_engine.py v1.0.0 (pure Python stdlib mirror of the index.html engine)
-Run at: 2026-11-20T15:00:14Z
+Run at: 2026-11-20T15:05:55Z
 ==============================================================================
 CHK-01  [PASS]
   claim : Preset 1 Authorized Baseline: exact verdict, score and finding mix
@@ -31,6 +31,6 @@ CHK-09  [PASS]
   result: 0 external-resource patterns found (script src / link href / iframe / embed / object / img src / @import / css url(http)); DOCTYPE and title present
 CHK-10  [PASS]
   claim : Redaction audit across all project files
-  result: scanned 7 files: 0 email tokens, 0 non-allowlisted IPv4 literals (RFC 5737 + loopback/private/link-local + 3 CHK-04 boundary probes), 0 bare registrable domains, 0 raw currency amounts; placeholders present ([REDACTED_ENTITY] x53, [REDACTED_AMOUNT] x13)
+  result: scanned 7 files: 0 email tokens, 0 non-allowlisted IPv4 literals (RFC 5737 + loopback/private/link-local + 3 CHK-04 boundary probes), 0 bare registrable domains, 0 raw currency amounts; placeholders present ([REDACTED_ENTITY] x59, [REDACTED_AMOUNT] x16)
 ==============================================================================
 SUMMARY: 10/10 checks passed — CERTIFIED
